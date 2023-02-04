@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+
+        <div class="container bg-info my-5 py-5 rounded text-center" id="box">
+                <h1 class="fw-bold display 1"><i>JS multifunction Activity</i></h1>
+                <div class="container shadow my-5 py-5 rounded">
+
+                    <div class="row shadow rounded my-5 py-5 mx-2">
+
+                            <div class="col-md">
+
+                                <button class="btn btn-warning shadow" onclick="change_text()">I will Change Button two Text</button>
+
+                            </div>
+
+                             <div class="col-md">
+
+                                <button class="btn btn-warning" onclick="textUpper()" id="button2">Text to UpperCase</button>
+                                
+                            </div>
+
+
+                             <div class="col-md">
+
+                                <button class="btn btn-warning" onclick="chBackcolor('red');">I will change the Background Color</button>
+                                
+                            </div>
+
+
+                             <div class="col-md">
+
+                                <button class="btn btn-warning" id="textUp" onclick="textLower()">restore my self to lower case</button>
+                                
+                            </div>
+
+
+                    </div>
+
+
+                          <div class="row row shadow  rounded my-5 py-5 mx-2">
+
+                            <div class="col-md">
+
+                            
+                                <button  class="btn btn-warning" onclick="document.getElementById('myImage').src='free.png';change_sale()">I will make Button 7 Free!</button>
+
+                            </div>
+
+                             <div class="col-md">
+
+                                <div id="item1">
+                                    <img src="sale.png" width="50px" id="myImage" >
+                                    <div class="title">I am Button!</div>
+                                <div>
+                                    <label>Payment Option:</label>
+                                    <select>
+                                    <option>COD</option>
+                                    <option>COP</option>
+                                    <option>CASH</option>
+                                </select>
+                                </div>
+                                <button class="btn btn-warning" onclick="addToCart(item1);document.getElementById('myImage').src='sale.png'" id="button8">I will Sell myself!</button>
+                            </div>
+                                
+                            </div>
+
+                            
+                             <div class="col-md">
+
+                                
+                                <button class="btn btn-warning" onclick="buttonColor()">Button</button>
+                                
+                            </div>
+
+
+                             <div class="col-md">
+                                
+                                <button class="btn btn-warning " onclick="removeBox()">Suicide</button>
+                             
+                            </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="cart" id="cart">
+                    <div id="title"></div>
+                </div>
+        </div>
+
+    <script src="bootstrap/bootstrap.min.js"></script>
+
+    <script>
+        function change_text(){
+            document.getElementById("button2").innerHTML = "Click me I will change Button 4 to UpperCase.";
+        }
+
+        function change_sale(){
+            document.getElementById("button8").innerHTML = "OMG! I hate Button 7, You can get one for Free but not Twice!";
+        }
+
+
+        function chBackcolor(color) {
+            document.body.style.background = color;
+        }
+
+        
+        function textUpper() {
+        let text = document.getElementById("textUp").innerHTML;
+        document.getElementById("textUp").innerHTML = text.toUpperCase();
+        }
+
+        function textLower() {
+        let text = document.getElementById("textUp").innerHTML;
+        document.getElementById("textUp").innerHTML = text.toLowerCase();
+        }
+
+
+
+        let addItemId = 0;
+
+
+        function addToCart(item) {
+        addItemId += 1;
+        let selectedItem = document.createElement('div');
+        selectedItem.classList.add('cartImg');
+        selectedItem.setAttribute('id', addItemId);
+        let img = document.createElement('img');
+        img.setAttribute('src', item.children[0].currentSrc);
+        let title = document.createElement('div');
+        title.innerText = item.children[1].innerText;
+        let label = document.createElement('div');
+        label.innerText = item.children[2].children[0].innerText;
+        let select = document.createElement('span');
+        select.innerText = item.children[2].children[1].value;
+        label.append(select);
+        let delBtn = document.createElement('button');
+        delBtn.innerText = 'Delete';
+        delBtn.setAttribute('onclick','del('+addItemId+')');
+        let cartItems = document.getElementById('title');
+        selectedItem.append(img);
+        selectedItem.append(title);
+        selectedItem.append(label);
+        selectedItem.append(delBtn);
+        cartItems.append(selectedItem);
+
+        }
+
+        function del(item){
+            document.getElementById(item).remove();
+        }
+        function removeBox() {
+        let elem = document.getElementById('box');
+        elem.parentNode.removeChild(elem);
+        }
+
+
+    
+        </script>
+</body>
+</html>
